@@ -1,0 +1,23 @@
+from picamera import PiCamera
+
+# Initialize PiCamera
+camera = PiCamera()
+
+def turn_off_camera():
+    camera.stop_preview()  # Stop camera preview
+    camera.close()        # Close camera instance
+
+try:
+    print("Press Enter to turn on the camera, and then press Enter again to turn it off.")
+    while True:
+        input("Press Enter to continue...")
+        # Turn on camera
+        print("Turning on the camera...")
+        camera.start_preview()
+        input("Press Enter to turn off the camera...")
+        # Turn off camera
+        print("Turning off the camera...")
+        turn_off_camera()
+
+except KeyboardInterrupt:
+    turn_off_camera()  # Turn off camera on keyboard interrupt
